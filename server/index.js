@@ -15,7 +15,7 @@ app.use(cors());
 app.use((req, res, next) => {
   res.setHeader(
     "Access-Control-Allow-Origin",
-    "https://localhost/4000"
+    "https://anokhi-pehel-backend-lemon.vercel.app"
   );
   res.header(
     "Access-Control-Allow-Methods",
