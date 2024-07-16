@@ -10,7 +10,12 @@ const mongoDB = require("./config/db");
 const router = require("./routers");
 mongoDB();
 
-app.use(cors());
+const corsOptions = {
+  origin: 'https://anokhi-pehel-mnnit.vercel.app',
+  optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
 
 app.use((req, res, next) => {
   res.setHeader(
