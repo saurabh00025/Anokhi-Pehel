@@ -30,6 +30,10 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/dist/index.html"));
 });
 
+app.get("/", (req, res) => {
+  res.send("hi I am backend part");
+});
+
 app.listen(PORT, () => {
   console.log(`server is running at ${PORT}`.bgCyan.white);
 });
