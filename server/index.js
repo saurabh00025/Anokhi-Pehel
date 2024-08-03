@@ -10,32 +10,14 @@ const mongoDB = require("./config/db");
 const router = require("./routers");
 mongoDB();
 
-// const corsOptions = {
-//   origin: 'https://anokhi-pehel-mnnit.vercel.app',
-//   optionsSuccessStatus: 200
-// };
+const corsOptions = {
+  origin: ['https://anokhi-pehel-mnnit.vercel.app', 'http://localhost:5173'],
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+  allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization'],
+  optionsSuccessStatus: 200
+};
 
-app.use(cors());
-
-app.use((req, res, next) => {
-  res.setHeader(
-    "Access-Control-Allow-Origin",
-    "https://anokhi-pehel-backend-lemon.vercel.app"
-  );
-  res.header(
-    "Access-Control-Allow-Methods",
-    "GET, POST, PUT, PATCH, DELETE" // Include DELETE here
-  );
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  next();
-});
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use("/images", express.static("images"));
 
